@@ -1,2 +1,5 @@
 # Exclude virtual environment folder
 venv/
+
+# Exclude Python bytecode files
+__pycache__/
