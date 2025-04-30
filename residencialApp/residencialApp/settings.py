@@ -11,6 +11,7 @@ SECRET_KEY = 'your-secret-key'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_URL = '/login/'
 
 DATABASES = {
     'default': {

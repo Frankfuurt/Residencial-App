@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+</head>
+<body>
+    <div class="ui container" style="margin-top: 50px;">
+        <h2 class="ui dividing header">Registro de Usuario</h2>
+        <form class="ui form" method="POST" action="/register/">
+            {% csrf_token %}
+            <!-- Token de seguridad (si usas frameworks como Django) -->
+            <!-- {% csrf_token %} -->
+
+            <div class="field">
+                <label>Nombre de Usuario</label>
+                <input type="text" name="username" placeholder="Nombre de Usuario" required>
+            </div>
+            <div class="field">
+                <label>Correo Electrónico</label>
+                <input type="email" name="email" placeholder="Correo Electrónico" required>
+            </div>
+            <div class="field">
+                <label>Contraseña</label>
+                <input type="password" name="password" placeholder="Contraseña" required>
+            </div>
+            <div class="field">
+                <label>Confirmar Contraseña</label>
+                <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" required>
+            </div>
+            <button class="ui primary button" type="submit">Registrar</button>
+        </form>
+        <div style="margin-top: 20px;">
+            <p>¿Ya tienes una cuenta? <a href="/login">Inicia sesión aquí</a>.</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+</body>
+</html>
