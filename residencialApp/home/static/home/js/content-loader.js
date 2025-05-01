@@ -1,27 +1,25 @@
+// Function to load content dynamically into a specified container
 document.addEventListener('DOMContentLoaded', () => {
-    function handlePanelAdministrativoClick() {
-        fetch('/dashboard/')
+    window.loadPage = function (url, containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) {
+            console.error(`Container with ID '${containerId}' not found.`);
+            return;
+        }
+
+        fetch(url)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Error al cargar la página del dashboard');
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 return response.text();
             })
             .then(html => {
-                const container = document.getElementById('dashboard-container');
-                if (container) {
-                    container.innerHTML = html;
-                    container.style.display = 'block'; // Asegurarse de que el contenedor sea visible
-                } else {
-                    console.error('No se encontró el contenedor para el dashboard');
-                }
+                container.innerHTML = html;
+                container.style.display = 'block';
             })
-            .catch(error => console.error('Error:', error));
-    }
-
-    window.handlePanelAdministrativoClick = handlePanelAdministrativoClick;
-
-    // Aquí puedes agregar el evento para el botón o enlace que activa el panel administrativo
-    // Por ejemplo:
-    // document.getElementById('mi-boton').addEventListener('click', handlePanelAdministrativoClick);
+            .catch(error => {
+                console.error('Error loading page:', error);
+            });
+    };
 });
