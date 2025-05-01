@@ -9,9 +9,9 @@
 </head>
 <body>
     <div style="text-align: center; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
-        <img src="{% static 'home/PaseoKusamil_Vertical_color.png' %}" alt="Logo" style="max-width:120px; margin-right: 20px;">
+        <img src="{% static 'home/images/PaseoKusamil_Vertical_color.png' %}" alt="Logo" style="max-width:80px; margin-right: 20px;">
         <div class="ui secondary pointing menu" style="flex-grow: 1; justify-content: center;">
-            <a class="item">Panel administrativo</a>
+            <a id="panel-administrativo" class="item">Panel administrativo</a>
             <div class="ui dropdown item">
                 Servicios <i class="dropdown icon"></i>
                 <div class="ui secondary pointing menu">
@@ -27,11 +27,24 @@
         </div>
     </div>
 
+    <div id="dashboard-container" style="display: none; padding: 0 20px;">
+        <!-- Contenido dinámico del dashboard se cargará aquí -->
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="/static/home/js/content-loader.js"></script>
     <script>
+        // Existing dropdown initialization
         $('.ui.dropdown').dropdown();
+
+        // Add click event listener for 'Panel administrativo' using its ID
+        document.getElementById('panel-administrativo').addEventListener('click', function() {
+            // Call the function from content-loader.js
+            handlePanelAdministrativoClick();
+        });
     </script>
+
     <footer style="background-color: black; color: white; text-align: center; padding: 10px 0; position: fixed; bottom: 0; width: 100%;">
         &copy; 2025 Todos los derechos reservados
     </footer>
