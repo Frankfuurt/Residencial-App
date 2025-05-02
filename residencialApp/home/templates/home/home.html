@@ -11,16 +11,10 @@
     <div style="text-align: center; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
         <img src="{% static 'home/images/PaseoKusamil_Vertical_color.png' %}" alt="Logo" style="max-width:80px; margin-right: 20px;">
         <div class="ui secondary pointing menu" style="flex-grow: 1; justify-content: center;">
-            <a id="panel-administrativo" class="item" href="/dashboard/" onclick="event.preventDefault(); loadPage('/dashboard/', 'dashboard-container'); this.classList.add('active');">Panel administrativo</a>
-            <div class="ui dropdown item">
-                Servicios <i class="dropdown icon"></i>
-                <div class="ui secondary pointing menu">
-                    <a class="item">Mapa residencial</a>
-                    <a class="item">Pagar Cuotas</a>
-                </div>
-            </div>
-            <a class="item">Contactanos</a>
-            <a class="item"> Calendario de Actividades</a>
+            <a id="panel-administrativo" class="item" href="/dashboard/" onclick="event.preventDefault(); loadPage('/dashboard/', 'dashboard-container'); setActive(this);">Panel administrativo</a>
+            <a class="item" onclick="setActive(this);">Mapa residencial</a>
+            <a class="item" onclick="setActive(this);">Contactanos</a>
+            <a class="item" onclick="setActive(this);"> Calendario de Actividades</a>
             <div class="right menu">
                 <a class="ui item" href="{% url 'logout' %}" style="margin-left: 20px;"><i class="user circle icon"></i>Salir</a>
             </div>
@@ -37,6 +31,17 @@
     <script>
         // Existing dropdown initialization
         $('.ui.dropdown').dropdown();
+
+        function setActive(element) {
+            // Primero, quita la clase 'active' de todos los elementos
+            let items = document.querySelectorAll('.item');
+            items.forEach(item => {
+            item.classList.remove('active');
+            });
+
+            // Ahora, agrega la clase 'active' al elemento que fue clickeado
+            element.classList.add('active');
+        }
     </script>
 
     <footer style="background-color: black; color: white; text-align: center; padding: 10px 0; position: fixed; bottom: 0; width: 100%;">
