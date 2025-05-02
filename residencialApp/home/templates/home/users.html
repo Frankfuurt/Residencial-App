@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuarios</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 </head>
+
 <body>
     <div class="ui container" style="margin-top: 50px;">
-        <h2 class="ui dividing header">Lista de Usuarios</h2>
-        <table class="ui celled table">
-            <thead>
-                <tr>
-                    <th>Nombre de Usuario</th>
-                    <th>Correo Electrónico</th>
-                    <th>Super Usuario</th>
-                    <th>Staff</th>
-                </tr>
-            </thead>
-            <tbody>
+        <h3 class="ui hidden divider">Lista de Usuarios</h3>
+        <div class="ui hidden divider"></div>
+        <tbody>
+            <div class="ui celled list">
+                <!-- Encabezados -->
+                <div class="item">
+                    <div class="ui grid" style="width: 100%; font-weight: bold;">
+                        <div class="four wide column">Nombre de Usuario</div>
+                        <div class="six wide column">Correo Electrónico</div>
+                        <div class="three wide column">Super Usuario</div>
+                        <div class="three wide column">Staff</div>
+                    </div>
+                </div>
+
+                <!-- Fila 1 -->
                 {% for user in users %}
-                <tr>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.is_superuser|yesno:"Sí,No" }}</td>
-                    <td>{{ user.is_staff|yesno:"Sí,No" }}</td>
-                </tr>
+                <div class="item">
+                    <div class="ui grid" style="width: 100%; align-items: center;">
+                        <div class="four wide column">
+                            <img class="ui avatar image" src="/images/avatar/small/helen.jpg">
+                            {{ user.username }}
+                        </div>
+                        <div class="six wide column">{{ user.email }}</div>
+                        <div class="three wide column">{{ user.is_superuser|yesno:"Sí,No" }}</div>
+                        <div class="three wide column">{{ user.is_staff|yesno:"Sí,No" }}</div>
+                    </div>
+                </div>
                 {% endfor %}
-            </tbody>
-        </table>
+        </tbody>
     </div>
 </body>
+
 </html>
