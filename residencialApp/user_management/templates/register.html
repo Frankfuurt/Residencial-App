@@ -9,7 +9,7 @@
 <body>
     <div class="ui container" style="margin-top: 50px;">
         <h2 class="ui dividing header">Registro de Usuario</h2>
-        <form class="ui form" method="POST" action="/register/">
+        <form class="ui form" method="POST" action="{% url 'register' %}">
             <!-- Token de seguridad (si usas frameworks como Django) -->
             {% csrf_token %}
 
