@@ -12,33 +12,30 @@
     <div class="ui container" style="margin-top: 50px;">
         <h3 class="ui hidden divider">Lista de Usuarios</h3>
         <div class="ui hidden divider"></div>
-        <tbody>
-            <div class="ui celled list">
-                <!-- Encabezados -->
-                <div class="item">
-                    <div class="ui grid" style="width: 100%; font-weight: bold;">
-                        <div class="four wide column">Nombre de Usuario</div>
-                        <div class="six wide column">Correo Electrónico</div>
-                        <div class="three wide column">Super Usuario</div>
-                        <div class="three wide column">Staff</div>
-                    </div>
-                </div>
-
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th class="four wide">Nombre de Usuario</th>
+                    <th class="six wide">Correo Electrónico</th>
+                    <th class="three wide">Super Usuario</th>
+                    <th class="three wide">Staff</th>
+                </tr>
+            </thead>
+            <tbody>
                 <!-- Fila 1 -->
                 {% for user in users %}
-                <div class="item">
-                    <div class="ui grid" style="width: 100%; align-items: center;">
-                        <div class="four wide column">
-                            <img class="ui avatar image" src="/images/avatar/small/helen.jpg">
-                            {{ user.username }}
-                        </div>
-                        <div class="six wide column">{{ user.email }}</div>
-                        <div class="three wide column">{{ user.is_superuser|yesno:"Sí,No" }}</div>
-                        <div class="three wide column">{{ user.is_staff|yesno:"Sí,No" }}</div>
-                    </div>
-                </div>
+                <tr>
+                    <td>
+                        <img class="ui avatar image" src="/images/avatar/small/helen.jpg">
+                        {{ user.username }}
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.is_superuser|yesno:"Sí,No" }}</td>
+                    <td>{{ user.is_staff|yesno:"Sí,No" }}</td>
+                </tr>
                 {% endfor %}
-        </tbody>
+            </tbody>
+        </table>
     </div>
 </body>
 
