@@ -40,4 +40,11 @@ def user_logout(request):
 # Perfil de usuario
 @login_required
 def profile(request):
-    return render(request, 'profile.html', {'profile': request.user.userprofile})
+    try:
+        profile = request.user.userprofile
+    except UserProfile.DoesNotExist:
+        # Create profile if it doesn't exist
+        profile = UserProfile.objects.create(user=request.user)
+        messages.warning(request, "Se ha creado un perfil nuevo para su cuenta.")
+    
+    return render(request, 'profile.html', {'profile': profile})
