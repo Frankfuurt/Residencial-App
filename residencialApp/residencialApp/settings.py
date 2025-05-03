@@ -11,6 +11,18 @@ SECRET_KEY = 'your-secret-key'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_URL = '/login/'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'residencialdb',  # Cambia esto por el nombre de tu base de datos
+        'USER': 'admin',      # Cambia esto por tu usuario de PostgreSQL
+        'PASSWORD': 'admin',  # Cambia esto por tu contraseña de PostgreSQL
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 # Application definition
 INSTALLED_APPS = [
@@ -21,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'user_management',
 ]
 
 MIDDLEWARE = [
@@ -56,12 +69,6 @@ WSGI_APPLICATION = 'residencialApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

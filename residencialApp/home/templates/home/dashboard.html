@@ -1,0 +1,11 @@
+<div class="ui segment" style="width: 30%; float: left;">
+  <h2 class="ui left floated header">Administración</h2>
+  <div class="ui clearing divider"></div>
+  <div class="middle aligned content">
+    <a id="panel-users" class="item"
+       href="{% url 'users' %}"
+       onclick="event.preventDefault(); loadPage('{% url 'users' %}', 'dashboard-container');">
+      Usuarios
+    </a>
+  </div>
+</div>

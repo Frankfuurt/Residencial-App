@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+</head>
+<body>
+    <div class="ui container" style="margin-top: 50px;">
+        <h2 class="ui dividing header">Iniciar Sesión</h2>
+        <form class="ui form" method="POST" action="">
+            {% csrf_token %}
+            <div class="field">
+                <label for="username">Nombre de Usuario</label>
+                <input type="text" name="username" id="username" placeholder="Nombre de Usuario" required>
+            </div>
+            <div class="field">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" placeholder="Contraseña" required>
+            </div>
+            {% if error %}
+                <div class="ui red message">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <button type="submit" class="ui primary button">Iniciar Sesión</button>
+        </form>
+        <div style="margin-top: 20px;">
+            <p>Registrate gratis <a href="/register">aquí</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+</head>
+
+<body>
+    <div class="ui container" style="margin-top: 50px;">
+        <h3 class="ui hidden divider">Lista de Usuarios</h3>
+        <div class="ui hidden divider"></div>
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th class="four wide">Nombre de Usuario</th>
+                    <th class="six wide">Correo Electrónico</th>
+                    <th class="three wide">Super Usuario</th>
+                    <th class="three wide">Staff</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Fila 1 -->
+                {% for user in users %}
+                <tr>
+                    <td>
+                        <img class="ui avatar image" src="/images/avatar/small/helen.jpg">
+                        {{ user.username }}
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.is_superuser|yesno:"Sí,No" }}</td>
+                    <td>{{ user.is_staff|yesno:"Sí,No" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
