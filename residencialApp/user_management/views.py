@@ -3,6 +3,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import CustomUserCreationForm#,UserProfileForm
+from django.contrib import messages
+
 # Registro de usuarios
 def register(request):
     if request.method == 'POST':
