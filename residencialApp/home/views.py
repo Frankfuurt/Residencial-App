@@ -14,3 +14,7 @@ def dashboard_view(request):
 def users_view(request):
     users = User.objects.all()  # Obtener todos los usuarios
     return render(request, 'home/users.html', {'users': users})
+
+@login_required
+def map_view(request):
+    return render(request, 'home/map.html')
