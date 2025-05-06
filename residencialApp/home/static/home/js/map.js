@@ -18,21 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const dropdown = container.querySelector('#elementSelector');
-        if (!dropdown) {
+        const dropdown_condominio = container.querySelector('#elementSelector-condominio');
+        const dropdown_casa = container.querySelector('#elementSelector');
+        if (!dropdown_casa) {
             console.error('El combo elementSelector no se encuentra en el DOM');
             return;
         }
 
-        console.log('Combo elementSelector encontrado:', dropdown);
+        console.log('Combo elementSelector encontrado:', dropdown_casa);
 
-        dropdown.addEventListener('change', () => {
-            console.log('Evento change disparado para:', dropdown.value);
+        dropdown_casa.addEventListener('change', () => {
+            console.log('Evento change disparado para:', dropdown_casa.value);
+            console.log('Evento change disparado para:', dropdown_condominio.value);
 
             // Cambiar la clase de las etiquetas seleccionadas
             container.querySelectorAll('.number.selected').forEach(el => el.classList.remove('selected'));
 
-            const selectedValue = dropdown.value;
+            const selectedValue = dropdown_condominio.value + dropdown_casa.value;
+            console.log('Valor seleccionado:', selectedValue);
             const correspondingNumber = container.querySelector(`.number[data-id="${selectedValue}"]`);
             if (correspondingNumber) {
                 correspondingNumber.classList.add('selected');
@@ -41,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.warn('No se encontró un número correspondiente para:', selectedValue);
             }
         });
+
+        populateElementSelector('elementSelector-condominio', 'elementSelector');
     };
 
     const observeMapSelection = () => {
@@ -64,3 +69,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function populateElementSelector(condominioSelectorId, elementSelectorId) {
+    const condominioSelector = document.getElementById(condominioSelectorId);
+    const elementSelector = document.getElementById(elementSelectorId);
+
+    condominioSelector.addEventListener('change', function() {
+        const condominio = this.value;
+
+        // Clear existing options
+        elementSelector.innerHTML = '<option value="">Selecciona un número</option>';
+
+        // Populate options based on selected condominio
+        let maxNumber = 0;
+        if (condominio === 'Condominio 1-') {
+            maxNumber = 34;
+        } else if (condominio === 'Condominio 2-') {
+            maxNumber = 30;
+        }
+
+        for (let i = 1; i <= maxNumber; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            elementSelector.appendChild(option);
+        }
+    });
+}
