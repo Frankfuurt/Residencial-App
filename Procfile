@@ -1,1 +1,1 @@
-web: gunicorn residencialApp.wsgi
+web: gunicorn residencialApp.residencialApp.wsgi:application
