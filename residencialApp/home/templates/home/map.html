@@ -29,15 +29,16 @@
             <div class="ten wide column">
                 <div class="eight wide column right aligned">
                     <div style="margin-bottom: 40px; position: relative;">
-                        <img src="/static/home/images/finalmap.png" alt="Mapa final" class="ui centered image"
+                        <img src="{% static 'home/images/finalmap.png' %}" alt="Mapa final" class="ui centered image"
                             style="width: 100%;">
 
                         <!-- Números superpuestos en la imagen -->
-                        <div class="map-overlay">
+                        <div class="map-overlay" role="group" aria-label="Mapa de casas">
                             <!-- primer bloque de casas -->
                             {% for item in items %}
                             <div class="number" data-id="{{item.condominio}}{{item.id}}"
-                                style="top: {{ item.top }}%; left: {{ item.left }}%;">
+                                style="top: {{ item.top }}%; left: {{ item.left }}%;"
+                                role="button" aria-label="Casa {{item.id}} del condominio {{item.condominio}}">
                                 {{ item.id }}
                             </div>
                             {% endfor %}
@@ -54,5 +55,5 @@
         </div>
     </div>
 
-    <link rel="stylesheet" type="text/css" href="/static/home/css/map.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/map.css' %}">
 </div>
