@@ -80,13 +80,19 @@ function populateElementSelector(condominioSelectorId, elementSelectorId) {
         // Clear existing options
         elementSelector.innerHTML = '<option value="">Selecciona un número</option>';
 
-        // Populate options based on selected condominio
-        let maxNumber = 0;
-        if (condominio === 'Condominio 1-') {
-            maxNumber = 34;
-        } else if (condominio === 'Condominio 2-') {
-            maxNumber = 30;
-        }
+        // Configuration object for condominiums
+        const condominioConfig = {
+            'Condominio 1-': 34,
+            'Condominio 2-': 30,
+            'Condominio 3-': 0, // Add values for other condominiums
+            'Condominio 4-': 0,
+            'Condominio 5-': 0,
+            'Condominio 6-': 0,
+            'Condominio 7-': 0
+        };
+        
+        // Get max number from configuration
+        const maxNumber = condominioConfig[condominio] || 0;
 
         for (let i = 1; i <= maxNumber; i++) {
             const option = document.createElement('option');
