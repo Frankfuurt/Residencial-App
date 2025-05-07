@@ -3,10 +3,10 @@ services:
     name: django-app
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn nombre_de_tu_proyecto.wsgi
+    startCommand: gunicorn residencialApp.wsgi
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: nombre_de_tu_proyecto.settings
+        value: residencialApp.settings
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
