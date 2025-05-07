@@ -1,16 +1,16 @@
-"""
-WSGI config for residencialApp project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/5.0/howto/deployment/wsgi/
-"""
-
 import os
+import sys
+from pathlib import Path
 
 from django.core.wsgi import get_wsgi_application
 
+# Establece el path al directorio raíz del proyecto
+PROJECT_ROOT_DJANGO = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT_DJANGO) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT_DJANGO))
+
+# Establece el módulo de configuración de Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'residencialApp.settings')
 
+# Aplica la configuración de WSGI
 application = get_wsgi_application()
