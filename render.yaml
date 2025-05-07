@@ -5,8 +5,10 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn residencialApp.residencialApp.wsgi:application
     envVars:
+      - key: PYTHONPATH
+        value: residencialApp
       - key: DJANGO_SETTINGS_MODULE
-        value: residencialApp.settings
+        value: residencialApp.residencialApp.settings
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
