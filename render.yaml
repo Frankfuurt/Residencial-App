@@ -3,7 +3,7 @@ services:
     name: django-app
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn residencialApp.wsgi
+    startCommand: gunicorn residencialApp.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: residencialApp.settings
@@ -11,3 +11,5 @@ services:
         generateValue: true
       - key: DEBUG
         value: "False"
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
