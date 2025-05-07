@@ -1,0 +1,60 @@
+{% load static %}
+<div id="map-container">
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="six wide column">
+
+                <div class="eight wide column left aligned">
+                    <!-- Combobox -->
+                    <div class="ui segment">
+
+                        <h3 class="ui header">Condominio</h3>
+                        <select id="elementSelector-condominio" class="ui dropdown">
+                            <option value="">Selecciona un número</option>
+                            <option value="Condominio 1-">1</option>
+                            <option value="Condominio 2-">2</option>
+                            <option value="Condominio 3-">3</option>
+                            <option value="Condominio 4-">4</option>
+                            <option value="Condominio 5-">5</option>
+                            <option value="Condominio 6-">6</option>
+                            <option value="Condominio 7-">7</option>
+                        </select>
+
+                        <h3 class="ui header">casa</h3>
+                        <select id="elementSelector" class="ui dropdown">
+                            <option value="">Selecciona un número</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="ten wide column">
+                <div class="eight wide column right aligned">
+                    <div style="margin-bottom: 40px; position: relative;">
+                        <img src="{% static 'home/images/finalmap.png' %}" alt="Mapa final" class="ui centered image"
+                            style="width: 100%;">
+
+                        <!-- Números superpuestos en la imagen -->
+                        <div class="map-overlay" role="group" aria-label="Mapa de casas">
+                            <!-- primer bloque de casas -->
+                            {% for item in items %}
+                            <div class="number" data-id="{{item.condominio}}{{item.id}}"
+                                style="top: {{ item.top }}%; left: {{ item.left }}%;"
+                                role="button" aria-label="Casa {{item.id}} del condominio {{item.condominio}}">
+                                {{ item.id }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agregar área de detalle -->
+        <div class="ui segment">
+            <h3 class="ui header">Detalle de Información</h3>
+            <p>Aquí se mostrará la información detallada seleccionada de las listas.</p>
+        </div>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/map.css' %}">
+</div>
