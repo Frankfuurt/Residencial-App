@@ -3,3 +3,6 @@ venv/
 
 # Exclude Python bytecode files
 __pycache__/
+
+# Eclude .venv folder
+.venv/
