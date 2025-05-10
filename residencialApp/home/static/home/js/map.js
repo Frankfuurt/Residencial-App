@@ -84,11 +84,11 @@ function populateElementSelector(condominioSelectorId, elementSelectorId) {
         const condominioConfig = {
             'Condominio 1-': 34,
             'Condominio 2-': 30,
-            'Condominio 3-': 0, // Add values for other condominiums
-            'Condominio 4-': 0,
-            'Condominio 5-': 0,
-            'Condominio 6-': 0,
-            'Condominio 7-': 0
+            'Condominio 3-': 19,
+            'Condominio 4-': 22,
+            'Condominio 5-': 26,
+            'Condominio 6-': 16,
+            'Condominio 7-': 17
         };
         
         // Get max number from configuration

@@ -54,5 +54,68 @@ def map_view(request):
         }
         items.append(item)
 
+    for i in range(1, 20):  # del 1 al 19
+        item = {
+            'id': i,
+            'condominio': 'Condominio 3-',
+            'top': round(16.1 - (i - 1) * 0.3, 1),
+            'left': round(9.1 + (i - 1) * 2.2, 1),
+        }
+        items.append(item)
+
+    for i in range(1, 12):  # del 1 al 11
+        item = {
+            'id': i,
+            'condominio': 'Condominio 4-',
+            'top': round(28.4 - (i - 1) * 0.3, 1),
+            'left': round(25.6 + (i - 1) * 2.2, 1),
+        }
+        items.append(item)
+
+    for i in range(12, 23):  # del 12 al 22
+        item = {
+            'id': i,
+            'condominio': 'Condominio 4-',
+            'top': round(28.1 + (i - 1) * 0.3, 1),
+            'left': round(72.5 - (i - 1) * 2.2, 1),
+        }
+        items.append(item)
+    
+    for i in range(1, 27):  # del 1 al 26
+        item = {
+            'id': i,
+            'condominio': 'Condominio 5-',
+            'top': round(30.0 + (i - 1) * 1.99, 1),
+            'left': round(9.4 + (i - 1) * 0.34, 1),
+        }
+        items.append(item)
+    
+    for i in range(1, 9):  # del 1 al 8
+        item = {
+            'id': i,
+            'condominio': 'Condominio 6-',
+            'top': round(77.7 - (i - 1) * 2.03, 1),
+            'left': round(31.5 - (i - 1) * 0.36, 1),
+        }
+        items.append(item)
+
+    for i in range(9, 17):  # del 9 al 16
+        item = {
+            'id': i,
+            'condominio': 'Condominio 6-',
+            'top': round(46.4 + (i - 1) * 2.03, 1),
+            'left': round(34 + (i - 1) * 0.36, 1),
+        }
+        items.append(item)
+
+    for i in range(1, 18):  # del 1 al 17
+        item = {
+            'id': i,
+            'condominio': 'Condominio 7-',
+            'top': round(91.8 - (i - 1) * 0.37, 1),
+            'left': round(20.1 + (i - 1) * 2.205, 1),
+        }
+        items.append(item)
+
     
     return render(request, 'home/map.html', {'items': items})
