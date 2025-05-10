@@ -6,3 +6,6 @@ __pycache__/
 
 # Eclude .venv folder
 .env
+
+# Exclude static files
+staticfiles/
