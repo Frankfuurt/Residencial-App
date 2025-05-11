@@ -10,27 +10,31 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        console.log('map.html detectado, inicializando funcionalidad de map.js');
-
         const container = document.getElementById('dashboard-container');
         if (!container) {
             console.error('No se encontró el contenedor dashboard-container');
             return;
         }
 
+        // Asignar la función showDataId a los divs con la clase "number"
+        const numberDivs = document.querySelectorAll('.number');
+        numberDivs.forEach(div => {
+            div.addEventListener('click', showDataId);
+        });
+
         const dropdown_condominio = container.querySelector('#elementSelector-condominio');
+
         const dropdown_casa = container.querySelector('#elementSelector');
         if (!dropdown_casa) {
             console.error('El combo elementSelector no se encuentra en el DOM');
             return;
         }
 
+        console.log('Combo seleccionado:', dropdown_condominio.value);
+
         console.log('Combo elementSelector encontrado:', dropdown_casa);
 
         dropdown_casa.addEventListener('change', () => {
-            console.log('Evento change disparado para:', dropdown_casa.value);
-            console.log('Evento change disparado para:', dropdown_condominio.value);
-
             // Cambiar la clase de las etiquetas seleccionadas
             container.querySelectorAll('.number.selected').forEach(el => el.classList.remove('selected'));
 
@@ -52,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const observer = new MutationObserver((mutations, obs) => {
             if (document.getElementById('map-container')) {
                 initializeMapFunctionality();
+                console.log('Funcionalidad del mapa inicializada');
                 obs.disconnect(); // Detener la observación después de inicializar
             }
         });
@@ -67,14 +72,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 observeMapSelection();
             }
         });
-    });
+    })
 });
+
+// crear funcion con nombre que detecte el click en los divs class="number" y mostrar el data-id
+function showDataId(event) {
+    const dataId = event.currentTarget.getAttribute('data-id');
+    console.log('Data ID:', dataId);
+}
 
 function populateElementSelector(condominioSelectorId, elementSelectorId) {
     const condominioSelector = document.getElementById(condominioSelectorId);
     const elementSelector = document.getElementById(elementSelectorId);
 
-    condominioSelector.addEventListener('change', function() {
+    condominioSelector.addEventListener('change', function () {
         const condominio = this.value;
 
         // Clear existing options
@@ -90,7 +101,7 @@ function populateElementSelector(condominioSelectorId, elementSelectorId) {
             'Condominio 6-': 16,
             'Condominio 7-': 17
         };
-        
+
         // Get max number from configuration
         const maxNumber = condominioConfig[condominio] || 0;
 
