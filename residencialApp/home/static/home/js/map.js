@@ -75,10 +75,27 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 });
 
-// crear funcion con nombre que detecte el click en los divs class="number" y mostrar el data-id
+// Crear función con nombre que detecte el clic en los divs class="number" y mostrar el data-id
 function showDataId(event) {
     const dataId = event.currentTarget.getAttribute('data-id');
     console.log('Data ID:', dataId);
+
+    // Dividir el data-id en condominio y casa
+    const [condominio, casa] = dataId.split('-');
+
+    // Seleccionar la opción adecuada en el combo condominio
+    const condominioDropdown = document.getElementById('elementSelector-condominio');
+    if (condominioDropdown) {
+        condominioDropdown.value = `${condominio}-`;
+        condominioDropdown.dispatchEvent(new Event('change'));
+    }
+
+    // Seleccionar la opción adecuada en el combo casa
+    const casaDropdown = document.getElementById('elementSelector');
+    if (casaDropdown) {
+        casaDropdown.value = casa;
+        casaDropdown.dispatchEvent(new Event('change'));
+    }
 }
 
 function populateElementSelector(condominioSelectorId, elementSelectorId) {
@@ -88,10 +105,10 @@ function populateElementSelector(condominioSelectorId, elementSelectorId) {
     condominioSelector.addEventListener('change', function () {
         const condominio = this.value;
 
-        // Clear existing options
+        // Limpiar las opciones existentes
         elementSelector.innerHTML = '<option value="">Selecciona un número</option>';
 
-        // Configuration object for condominiums
+        // Objeto de configuración para los condominios
         const condominioConfig = {
             'Condominio 1-': 34,
             'Condominio 2-': 30,
@@ -102,7 +119,7 @@ function populateElementSelector(condominioSelectorId, elementSelectorId) {
             'Condominio 7-': 17
         };
 
-        // Get max number from configuration
+        // Obtener el número máximo de la configuración
         const maxNumber = condominioConfig[condominio] || 0;
 
         for (let i = 1; i <= maxNumber; i++) {
