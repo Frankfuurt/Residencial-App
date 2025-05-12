@@ -4,6 +4,37 @@
         <div class="ui grid">
             <div class="six wide column">
 
+
+
+                <div class="ui link cards centered" style="margin-bottom: 20px;">
+                    <div class="card">
+                        <div class="image">
+                            <img src="/images/avatar2/large/matthew.png"
+                                onerror="this.onerror=null; this.src='static/home/images/noImage.png';">
+                        </div>
+                        <div class="content">
+                            <div class="header">Matt Giampietro</div>
+                            <div class="meta">
+                                <a>Friends</a>
+                            </div>
+                            <div class="description">
+                                Matthew is an interior designer living in New York.
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated">
+                                Joined in 2013
+                            </span>
+                            <span>
+                                <i class="user icon"></i>
+                                75 Friends
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <div class="eight wide column left aligned">
                     <!-- Combobox -->
                     <div class="ui segment">
@@ -38,8 +69,8 @@
                             <!-- primer bloque de casas -->
                             {% for item in items %}
                             <div class="number" data-id="{{item.condominio}}{{item.id}}"
-                                style="top: {{ item.top }}%; left: {{ item.left }}%;"
-                                role="button" aria-label="Casa {{item.id}} del condominio {{item.condominio}}">
+                                style="top: {{ item.top }}%; left: {{ item.left }}%;" role="button"
+                                aria-label="Casa {{item.id}} del condominio {{item.condominio}}">
                                 {{ item.id }}
                             </div>
                             {% endfor %}
@@ -52,7 +83,15 @@
         <!-- Agregar área de detalle -->
         <div class="ui segment">
             <h3 class="ui header">Detalle de Información</h3>
-            <p>Aquí se mostrará la información detallada seleccionada de las listas.</p>
+            <div id="error" class="ui red message" style="display: none;"></div>
+
+            <div id="perfil-info" class="ui segment" style="display: none;">
+                <h4 class="ui dividing header">Información del Usuario</h4>
+                <p><strong>Usuario:</strong> <span id="username"></span></p>
+                <p><strong>Condominio:</strong> <span id="condominio_valor"></span></p>
+                <p><strong>Casa:</strong> <span id="casa_valor"></span></p>
+                <div id="foto_container" class="ui small image"></div>
+            </div>
         </div>
     </div>
 

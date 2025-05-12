@@ -6,4 +6,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard_view, name='dashboard'),
     path('users/', views.users_view, name='users'),
     path('map/', views.map_view, name='map'),
+    path('get-profile/', views.get_profile_information_view, name='get_profile_information'),
+
 ]

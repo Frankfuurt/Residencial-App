@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Crear función con nombre que detecte el clic en los divs class="number" y mostrar el data-id
 function showDataId(event) {
     const dataId = event.currentTarget.getAttribute('data-id');
-    console.log('Data ID:', dataId);
 
     // Dividir el data-id en condominio y casa
     const [condominio, casa] = dataId.split('-');
