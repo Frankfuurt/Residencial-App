@@ -2,9 +2,8 @@
 <div id="map-container">
     <div class="ui container">
         <div class="ui grid">
-            <div class="six wide column">
-
-                <div class="eight wide column left aligned">
+            <div class="four wide column">
+                <div class="eight wide column left aligned" style="margin-bottom: 15px;">
                     <!-- Combobox -->
                     <div class="ui segment">
 
@@ -26,8 +25,54 @@
                         </select>
                     </div>
                 </div>
+
+                <div class="ui cards centered">
+                    <div class="card">
+                        <div class="image" id="foto_container" class="fixed-size-image">
+                            <img src="" onerror="this.onerror=null; this.src='static/home/images/noImage.png';" style="height: 260px;">
+                        </div>
+                        <div class="content" style="height: 167px;">
+                            <div class="header" id="username">Matt Giampietro</div>
+                            <div class="meta">
+                                <a id="telephone">Friends</a>
+                            </div>
+                            <div class="meta">
+                                <a id="email">Friends</a>
+                            </div>
+                            <div class="description" id="bio">
+                                Matthew is an interior designer living in New York.
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="right floated" id="created_at">
+                                Joined in 2013
+                            </span>
+                            <!-- <span>
+                                <i class="user icon"></i>
+                                75 Friends
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ui fluid vertical steps">
+                    <div class="completed step">
+                        <i class="credit card icon"></i>
+                        <div class="content">
+                            <div class="title">Mantenimiento</div>
+                            <div class="description">Uso de amenidades.</div>
+                        </div>
+                    </div>
+                    <div class="ui step">
+                        <i class="close icon"></i>
+                        <div class="content">
+                            <div class="title">Porton</div>
+                            <div class="description">Uso de reja automatica.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="ten wide column">
+            <div class="twelve wide column">
                 <div class="eight wide column right aligned">
                     <div style="margin-bottom: 40px; position: relative;">
                         <img src="{% static 'home/images/finalmap.png' %}" alt="Mapa final" class="ui centered image"
@@ -38,8 +83,8 @@
                             <!-- primer bloque de casas -->
                             {% for item in items %}
                             <div class="number" data-id="{{item.condominio}}{{item.id}}"
-                                style="top: {{ item.top }}%; left: {{ item.left }}%;"
-                                role="button" aria-label="Casa {{item.id}} del condominio {{item.condominio}}">
+                                style="top: {{ item.top }}%; left: {{ item.left }}%;" role="button"
+                                aria-label="Casa {{item.id}} del condominio {{item.condominio}}">
                                 {{ item.id }}
                             </div>
                             {% endfor %}
@@ -50,10 +95,24 @@
         </div>
 
         <!-- Agregar área de detalle -->
-        <div class="ui segment">
-            <h3 class="ui header">Detalle de Información</h3>
-            <p>Aquí se mostrará la información detallada seleccionada de las listas.</p>
+        <div class="ui segment" id="perfil-info" style="display: none;">
+            <h3 class="ui header centered">Detalle de Información</h3>
+            <div id="error" class="ui red message" style="display: none;"></div>
+
+            <h4 class="ui dividing header">Informacion del usuario</h4>
+            <p><strong>Usuario:</strong> <span id="username2"></span></p>
+            <p><strong>Nombre:</strong> <span id="name2"></span></p>
+            <p><strong>Teléfono:</strong> <span id="telephone_valor"></span></p>
+            <p><strong>Email:</strong> <span id="email_valor"></span></p>
+            <p><strong>Biografia:</strong> <span id="bio_valor"></span></p>
+            <p><strong>Creado en:</strong> <span id="created_at_valor"></span></p>
+
+            <h4 class="ui dividing header">Información de la Casa</h4>
+            <p><strong>Condominio:</strong> <span id="condominio_valor"></span></p>
+            <p><strong>Casa:</strong> <span id="casa_valor"></span></p>
+
         </div>
+        <div class="segment" style="margin-bottom: 100px;"></div>
     </div>
 
     <link rel="stylesheet" type="text/css" href="{% static 'home/css/map.css' %}">

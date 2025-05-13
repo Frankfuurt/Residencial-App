@@ -22,6 +22,10 @@ DATABASES = {
     }
 }
 
+# carpeta de fotos de perfil
+MEDIA_URL = '/media/'  # URL pública para acceder a archivos media
+MEDIA_ROOT = BASE_DIR / 'media'  # Ruta absoluta donde se guardan los archivos
+
 # Aplicaciones instaladas
 INSTALLED_APPS = [
     'django.contrib.admin',
