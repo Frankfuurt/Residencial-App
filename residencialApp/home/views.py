@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from home.Helpers import map_houses
 from user_management.models import UserProfile
 from django.views.decorators.http import require_GET
+from datetime import datetime
 
 @login_required
 def home_view(request):
@@ -38,13 +39,22 @@ def get_profile_information_view(request):
     # Creamos la respuesta para devolverla
     data = []
     for perfil in perfiles:
+        fecha = perfil.created_at.strftime('%d/%m/%Y')
+
         data.append({
             'username': perfil.user.username,
+            'bio': perfil.bio,
             'condominio': perfil.condominio,
             'casa': perfil.casa,
-            #'foto_url': perfil.foto.url if perfil.foto else '',
+            'foto_url': perfil.profile_picture.url if perfil.profile_picture else '',
+            'phone_number': perfil.phone_number,
+            'email': perfil.user.email,
+            'first_name': perfil.user.first_name,
+            'last_name': perfil.user.last_name,
+            'is_active': perfil.is_active,
+            'is_verified': perfil.is_verified,
+            'created_at': fecha,
+            'updated_at': perfil.updated_at.strftime('%Y-%m-%d %H:%M:%S'),
         })
-
-        print(str(data))
 
     return JsonResponse({'perfiles': data})
