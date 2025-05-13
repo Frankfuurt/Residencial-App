@@ -64,23 +64,37 @@ function buscarPerfil() {
                 console.log('perfil:', perfil);
 
                 // si perfil vacio o indefinido return  
-                if (!perfil || perfil.length == 0) {
-                    document.getElementById('username').textContent = ''
-                    document.getElementById('condominio_valor').textContent = ''
-                    document.getElementById('casa_valor').textContent = ''
-                    document.getElementById('foto_container').innerHTML = fixedImageHTML;
+if (!perfil || perfil.length == 0) {
+    // Display a "no profile found" message
+    const noProfileMsg = document.getElementById('no-profile');
+    if (noProfileMsg) noProfileMsg.style.display = 'block';
 
-                    // Agregar efecto de transición de Semantic UI
-                    $('.autumn.leaf').transition({
-                        animation: 'fade in down',
-                        duration: 800,
-                        onStart: function () {
-                            $(this).show(); // por si acaso estaba oculto
-                        }
-                    });
+    document.getElementById('username').textContent = ''
+    document.getElementById('condominio_valor').textContent = ''
+    document.getElementById('casa_valor').textContent = ''
+    document.getElementById('name2').textContent = ''
+    document.getElementById('username2').textContent = ''
+    document.getElementById('telephone').textContent = ''
+    document.getElementById('telephone_valor').textContent = ''
+    document.getElementById('email').textContent = ''
+    document.getElementById('email_valor').textContent = ''
+    document.getElementById('bio').textContent = ''
+    document.getElementById('bio_valor').textContent = ''
+    document.getElementById('created_at').textContent = ''
+    document.getElementById('created_at_valor').textContent = ''
+    document.getElementById('foto_container').innerHTML = fixedImageHTML;
 
-                    return
-                }
+    // Agregar efecto de transición de Semantic UI
+    $('.autumn.leaf').transition({
+        animation: 'fade in down',
+        duration: 800,
+        onStart: function () {
+            $(this).show(); // por si acaso estaba oculto
+        }
+    });
+
+    return
+}
 
                 document.getElementById('username').textContent = perfil.first_name + ' ' + perfil.last_name;
                 document.getElementById('name2').innerText = perfil.first_name + ' ' + perfil.last_name;
